@@ -1,0 +1,28 @@
+{
+  "name": "ca1_cpd_iad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leilacctcomp/CA1_CPD_IAD.git"
+  },
+  "keywords": [
+    "Mental",
+    "Health",
+    "Wellbeing",
+    "Happyness"
+  ],
+  "author": "Leila S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leilacctcomp/CA1_CPD_IAD/issues"
+  },
+  "homepage": "https://github.com/leilacctcomp/CA1_CPD_IAD#readme",
+  "devDependencies": {
+    "electron": "^24.1.2"
+  }
+}

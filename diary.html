@@ -1,13 +1,26 @@
 <!-- HTML for the Diary Page -->
-<!--Code to create text area for the diary entries and a button for saving it-->
 <div id="diary-page">
-    <h1>Diary</h1>
-    <div>
-      <textarea id="entryInput" placeholder="Write your diary entry here"></textarea>
-      <button id="saveButton">Save</button>
-    </div>
+    
+  <h1>Diary</h1>
+    
+  <!--Text area where users will write-->
+  <div>
+  <!--Creating a textarea inside the HTML page, for the users to write their diary, and assigning an id to access it in the JavaScript -->
+  <textarea id="entryInput" placeholder="Write your diary entry here"></textarea>
+  <!--Adding a button to be the save button and assigning an id to access it in the JavaScript file-->
+  <button id="saveButton">Save</button>
+  </div>
+    
+  <!--Area to display the entries saved-->
+    <!--Creating a div to be the container that is gonna display the saved entries, and assigning an id to access it in JavaScript-->
     <div id="entriesContainer"></div>
+
+
     <!-- JavaScript for the save functionality -->
     <script src="diary.js"></script>
-  </div>
-  
+</div>
+
+
+
+
+

@@ -1,0 +1,42 @@
+/* CSS styles for the Mood Tracking page */
+.mood-tracking {
+    text-align: center;
+  }
+  
+  .calendar {
+    margin-top: 20px;
+  }
+  
+  .calendar table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .calendar th,
+  .calendar td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .calendar th {
+    background-color: #f2f2f2;
+  }
+  
+  .calendar td {
+    cursor: pointer;
+  }
+  
+  .calendar .mood-happy {
+    background-color: green;
+    color: white;
+  }
+  
+  .calendar .mood-neutral {
+    background-color: yellow;
+  }
+  
+  .calendar .mood-sad {
+    background-color: red;
+    color: white;
+  }
+  

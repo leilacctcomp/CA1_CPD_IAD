@@ -4,7 +4,7 @@
  * state changes. */
 // Get references to HTML elements
     const reminderInput = document.getElementById('reminderInput'); //input field where users can enter their reminders
-    const addButton = document.getElementById('addButton'); // button that triggers the addition of a new reminder
+    const addButton = document.getElementById('addButton'); //button that triggers the addition of a new reminder
     const reminderList = document.getElementById('reminderList'); //container element where the reminders will be displayed
   
     //When the button is clicked the callback function is executed

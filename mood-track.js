@@ -10,9 +10,9 @@ const moods = [
       moodLevel: 'neutral',
       notes: 'Work was stressful today'
     },
-    // Add more mood records as needed
+    // Add more mood records if needed
   ];
-  
+  //Generates the calendar and assigns moods to the dates
   function renderCalendar() {
     const calendarBody = document.getElementById('calendar-body');
   
@@ -60,29 +60,32 @@ const moods = [
     const mood = moods.find((mood) => mood.date === dateString);
     return mood ? `mood-${mood.moodLevel}` : '';
   }
-  
+  /**This function is gonna prompts the user to set a mood for the date if it 
+   * hasn't already been set when the user clicks on a date*/
   function handleDayClick(event) {
     const selectedDay = event.target;
     const date = selectedDay.getAttribute('data-date');
     const mood = getMoodForDate(new Date(date));
-  
+
     if (mood) {
       // Display mood details for the selected day
       alert(`Mood for ${date}: ${mood}`);
     } else {
       // Prompt user to set mood for the selected day
       const newMood = prompt(`Set mood for ${date}: happy, neutral, or sad`);
+      const newNotes = prompt('Any notes for today?');//Prompt user to set notes for the mood
       if (newMood && ['happy', 'neutral', 'sad'].includes(newMood)) {
         const newMoodEntry = {
           date: date,
           moodLevel: newMood,
-          notes: ''
+          notes: newNotes
         };
         moods.push(newMoodEntry);
         selectedDay.classList.add(`mood-${newMood}`);
       }
     }
   }
+
   
   // Render the calendar when the page is loaded
   document.addEventListener('DOMContentLoaded', renderCalendar);

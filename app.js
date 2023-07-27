@@ -1,19 +1,21 @@
 // The necessary code to create and display the window in electron
 //Instance of the BrowserWindow class
-//const { app, BrowserWindow } = require('electron');
+/**const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
+
+// Create a new BrowserWindow instance
+let mainWindow;
+let diaryWindow;
+let savedEntries = [];
 
 // Open the developer tools
-/* This line should be added before creating the window
+ //This line should be added before creating the window
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();
   mainWindow.webContents.openDevTools();
 }
-
-// Create a new BrowserWindow instance
-let mainWindow;
-
-function createWindow() {
-  // Create the browser window
+// Create the browser window
+function createMainWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -24,48 +26,16 @@ function createWindow() {
 
   // Load the HTML file
   mainWindow.loadFile('mood-tracking.html');
-  //mainWindow.loadFile('diary.html');
-  // Event: Emitted when the window is closed
   mainWindow.on('closed', () => {
-    // Dereference the window object
     mainWindow = null;
   });
 }
-
-// Event: Emitted when Electron has finished initialization
-app.on('ready', createWindow);
-
-// Event: Emitted when all windows are closed
-app.on('window-all-closed', () => {
-  // Quit the app on macOS when all windows are closed
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
-
-// Event: Emitted when the app is activated (macOS)
-app.on('activate', () => {
-  // Create a window if none exists when the app is activated (macOS)
-  if (mainWindow === null) {
-    createWindow();
-  }
-});*/
-
-//Diary window
-//Code to create the BrowserWindow for the diary page
-// Diary window
-const { app, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
-
-let diaryWindow;
-let savedEntries = [];
-
 function createDiaryWindow() {
-  const diaryWindow = new BrowserWindow({
+  diaryWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js') //WHAT WOULD THIS DIRNAME BE???????????
+      preload: path.join(__dirname, 'preload.js') 
     }
   });
 
@@ -74,10 +44,17 @@ function createDiaryWindow() {
   diaryWindow.webContents.on('did-finish-load', () => {
     diaryWindow.webContents.send('getEntries');
   });
+
+  diaryWindow.on('closed', () => {
+    diaryWindow = null;
+  });
 }
 
-app.whenReady().then(createDiaryWindow);
-
+ipcMain.on('openDiaryWindow', (event) => {
+  if (!diaryWindow) {
+    createDiaryWindow();
+  }
+});
 ipcMain.on('saveEntry', (event, entry) => {
   savedEntries.push(entry);
   diaryWindow.webContents.send('showEntries', savedEntries);
@@ -85,4 +62,51 @@ ipcMain.on('saveEntry', (event, entry) => {
 
 ipcMain.on('getEntries', (event) => {
   event.sender.send('showEntries', savedEntries);
+});
+
+app.on('ready', createMainWindow);
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (mainWindow === null) {
+    createMainWindow();
+  }
+});*/
+const { app, BrowserWindow } = require('electron');
+
+let mainWindow;
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
+
+  mainWindow.loadFile('index.html');
+  
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
+}
+
+app.on('ready', createWindow);
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (mainWindow === null) {
+    createWindow();
+  }
 });

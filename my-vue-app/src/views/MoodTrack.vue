@@ -1,0 +1,36 @@
+<!-- HTML code for the mood tracking page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Tracking</title>
+    <!--CSS style link to link the external CSS style to this HTML file-->
+    <link rel="stylesheet" href="mood-track.css">
+</head>
+ 
+  <body>  
+<div class="mood-tracking">
+  <h2>Mood Tracking</h2>
+  <div class="calendar">
+    <!-- Using a HTML table to represent the calendar -->
+    <table>
+      <thead>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody id="calendar-body"></tbody>
+    </table>
+  </div>
+</div>
+<!--JavaScript link to link the external JavaScript to this HTML file-->
+<script src="mood-track.js"></script>
+</body>
+</html>

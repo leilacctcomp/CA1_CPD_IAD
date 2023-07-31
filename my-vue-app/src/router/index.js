@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-// Here you can import your components
-// import Diary from '../views/Diary.vue';
-// import MoodTrack from '../views/MoodTrack.vue';
-// import GoalSetting from '../views/GoalSetting.vue';
-// import Reminder from '../views/Reminder.vue';
-// import Gaming from '../views/Gaming.vue';
-// import Analytics from '../views/Analytics.vue';
+// Importing the Vue pages components
+import Diary from '../views/Diary.vue';
+import MoodTrack from '../views/MoodTrack.vue';
+import GoalSetting from '../views/GoalSetting.vue';
+import Reminder from '../views/Reminder.vue';
+import Gaming from '../views/Gaming.vue';
+import Analytics from '../views/Analytics.vue';
 
 const routes = [
   {

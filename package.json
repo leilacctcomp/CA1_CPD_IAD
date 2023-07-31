@@ -1,30 +1,17 @@
 {
   "name": "ca1_cpd_iad",
   "version": "1.0.0",
-  "main": "app.js",
+  "description": "",
+  "author": "Leila S",
   "scripts": {
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leilacctcomp/CA1_CPD_IAD.git"
-  },
-  "keywords": [
-    "Mental",
-    "Health",
-    "Wellbeing",
-    "Happyness"
-  ],
-  "author": "Leila S",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/leilacctcomp/CA1_CPD_IAD/issues"
-  },
-  "homepage": "https://github.com/leilacctcomp/CA1_CPD_IAD#readme",
-  "devDependencies": {
-    "electron": "^24.3.1"
-  },
+  "main": "background.js",
   "dependencies": {
     "boolean": "^3.2.0",
     "buffer-crc32": "^0.2.13",
@@ -87,5 +74,24 @@
     "yallist": "^4.0.0",
     "yauzl": "^2.10.0"
   },
-  "description": ""
+  "devDependencies": {
+    "electron": "^24.3.1",
+    "electron-devtools-installer": "^3.1.0",
+    "vue-cli-plugin-electron-builder": "~1.4.6"
+  },
+  "bugs": {
+    "url": "https://github.com/leilacctcomp/CA1_CPD_IAD/issues"
+  },
+  "homepage": "https://github.com/leilacctcomp/CA1_CPD_IAD#readme",
+  "keywords": [
+    "Mental",
+    "Health",
+    "Wellbeing",
+    "Happyness"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leilacctcomp/CA1_CPD_IAD.git"
+  }
 }

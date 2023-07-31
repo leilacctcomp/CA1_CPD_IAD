@@ -90,7 +90,7 @@ function createWindow() {
     }
   });
 
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('index.html'); //Electron app will load this index.html as the main page
   
   mainWindow.on('closed', () => {
     mainWindow = null;

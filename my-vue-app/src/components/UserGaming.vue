@@ -68,11 +68,6 @@ export default {
     startGame(gameTitle) {
       console.log(`Starting ${gameTitle}...`);
     },
-  },
-  mounted() {
-    this.simulateGameProgress();
-  },
-  methods: {
     simulateGameProgress() {
       setInterval(() => {
         this.currentPoints += 50;
@@ -82,93 +77,8 @@ export default {
       }, 1000);
     },
   },
-}
-</script>
-
-<style scoped>
-<template>
-  <div>
-    <div class="header">
-      <h1>Welcome to MoodShine Gaming</h1>
-      <div class="profile">
-        <div class="avatar"></div>
-        <div class="user-info">
-          <div class="username">John Doe</div>
-          <div class="user-settings">Settings</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="game-selection">
-      <h2>Choose a Game:</h2>
-      <div class="game-card" v-for="(game, index) in games" :key="index">
-        <h3>{{ game.title }}</h3>
-        <p>{{ game.description }}</p>
-        <button class="play-button" @click="startGame(game.title)">Play</button>
-      </div>
-    </div>
-
-    <div class="game-progress">
-      <h2>Game Progress:</h2>
-      <div class="progress-container">
-        <div class="progress-bar" :style="{width: progressPercentage + '%'}"></div>
-        <div class="progress-info">
-          <span>Level 1</span>
-          <span>Points: {{ currentPoints }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="navigation-menu">
-      <h2>Navigation:</h2>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Games</a></li>
-      </ul>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      games: [
-        {
-          title: 'Game 1',
-          description: 'Game 1 Life is like a treasure hunt!'
-        },
-        {
-          title: 'Game 2',
-          description: 'Game 2 Life is a treasure mined by gods!'
-        }
-      ],
-      currentPoints: 0,
-      maxPoints: 1000,
-    }
-  },
-  computed: {
-    progressPercentage() {
-      return (this.currentPoints / this.maxPoints) * 100;
-    },
-  },
-  methods: {
-    startGame(gameTitle) {
-      console.log(`Starting ${gameTitle}...`);
-    },
-  },
   mounted() {
     this.simulateGameProgress();
-  },
-  methods: {
-    simulateGameProgress() {
-      setInterval(() => {
-        this.currentPoints += 50;
-        if (this.currentPoints >= this.maxPoints) {
-          this.currentPoints = this.maxPoints;
-        }
-      }, 1000);
-    },
   },
 }
 </script>
@@ -231,7 +141,6 @@ export default {
       border-radius: 5px;
     }
 
-    /* Remember to add background-image for the avatar image */
     .avatar {
       width: 50px;
       height: 50px;
@@ -254,7 +163,6 @@ export default {
       color: #666;
     }
 
-    /* CSS styles for the game progress indicator */
     .game-progress {
       margin-top: 20px;
     }
@@ -287,7 +195,6 @@ export default {
       color: #666;
     }
 
-    /* Media query for responsiveness */
     @media (max-width: 600px) {
       .game-progress {
         margin-top: 10px;

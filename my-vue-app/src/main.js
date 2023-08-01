@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from '.src./router'; // check path
+import router from './router/router'; // check path
+
 
 createApp(App)
   .use(router)

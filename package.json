@@ -13,6 +13,7 @@
   },
   "main": "src/background.js",
   "dependencies": {
+    "@vue/cli-service": "^5.0.8",
     "@vue/cli-shared-utils": "^5.0.8",
     "boolean": "^3.2.0",
     "buffer-crc32": "^0.2.13",

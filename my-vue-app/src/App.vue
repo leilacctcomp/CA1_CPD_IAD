@@ -1,26 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <nav>
+      <router-link to="/">diary</router-link>
+      <router-link to="/mood-track">Mood Tracker</router-link>
+      <router-link to="/goal-setting">Goal Setting</router-link>
+      <router-link to="/reminder">Reminder</router-link>
+      <router-link to="/gaming">Gaming</router-link>
+      <router-link to="/analytics">Analytics</router-link>
+    </nav>
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+// basic layout
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/*styles */
 </style>
+

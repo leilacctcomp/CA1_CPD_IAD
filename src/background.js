@@ -1,16 +1,12 @@
 'use strict';
+/*This file managers the Electron main process, including the lifecycle events of the Electron app,
+ and sets up and controls the browser windows*/
+const { app, protocol, BrowserWindow } = require('electron');
+const path = require('path');
 
-const electron = require('electron');
-const app = electron.app;
-const protocol = electron.protocol;
-const BrowserWindow = electron.BrowserWindow;
+const { createProtocol } = require('vue-cli-plugin-electron-builder');
 
-const vueCliPluginElectronBuilder = require('vue-cli-plugin-electron-builder');
-const createProtocol = vueCliPluginElectronBuilder.createProtocol;
-
-const electronDevtoolsInstaller = require('electron-devtools-installer');
-const installExtension = electronDevtoolsInstaller.default;
-const VUEJS_DEVTOOLS = electronDevtoolsInstaller.VUEJS_DEVTOOLS;
+const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -32,10 +28,28 @@ async function createWindow() {
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
     if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
-    createProtocol('app');
-    win.loadURL('app://./index.html');
+    win.loadURL('app://public/index.html');
   }
 }
+
+app.whenReady().then(() => {
+  protocol.registerFileProtocol('app', (request, callback) => {
+    const url = request.url.substr(7);
+    callback({ path: path.normalize(`${__dirname}/${url}`) });
+  }, (error) => {
+    if (error) console.error('Failed to register protocol');
+  });
+
+  createWindow();
+
+  if (isDevelopment && !process.env.IS_TEST) {
+    try {
+      installExtension(VUEJS_DEVTOOLS);
+    } catch (e) {
+      console.error('Vue Devtools failed to install:', e.toString());
+    }
+  }
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -45,17 +59,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) createWindow();
-});
-
-app.on('ready', async () => {
-  if (isDevelopment && !process.env.IS_TEST) {
-    try {
-      await installExtension(VUEJS_DEVTOOLS);
-    } catch (e) {
-      console.error('Vue Devtools failed to install:', e.toString());
-    }
-  }
-  createWindow();
 });
 
 if (isDevelopment) {
@@ -71,4 +74,5 @@ if (isDevelopment) {
     });
   }
 }
+
 

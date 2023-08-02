@@ -73,6 +73,7 @@
     "type-fest": "^0.13.1",
     "universalify": "^0.1.2",
     "vue-router": "^4.2.4",
+    "vue-template-compiler": "^2.7.14",
     "wrappy": "^1.0.2",
     "yallist": "^4.0.0",
     "yauzl": "^2.10.0"

@@ -1,5 +1,6 @@
 'use strict'
-
+/*This file managers the Electron main process, including the lifecycle events of the Electron app,
+ and sets up and controls the browser windows*/
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
@@ -31,7 +32,8 @@ async function createWindow() {
   } else {
     createProtocol('app')
     // Load the index.html when not in development
-    win.loadURL('app://./index.html')
+    //win.loadURL('app://./index.html')
+    win.loadFile('public/index.html')
   }
 }
 

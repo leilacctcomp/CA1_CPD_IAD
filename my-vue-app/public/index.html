@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodShine App</title>
+  <link rel="stylesheet" href="styles.css"><!--Link to the external css style-->
+</head>
+
+<!--Sidebar for navigation-->
+<body>
+  <div class="sidebar">
+    <ul>
+      <li><a href="diary.html">Diary</a></li>
+      <li><a href="mood-track.html">Mood Tracking</a></li>
+      <li><a href="goal-setting.html">Goal Setting</a></li>
+      <li><a href="reminder.html">Reminders</a></li>
+      <li><a href="gaming.html">Gaming</a></li>
+      <li><a href="analytics.html">Analytics</a></li>
+    </ul>
+  </div>
+
+  <!--Main content area that is gonna load the contents of other pages when their link is clicked-->
+  <div id="content"></div>
+
+  <script src="navigation.js"></script>
+</body>
 </html>

@@ -1,20 +1,23 @@
 {
-  "name": "my-vue-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "moodshine",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Leila S",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "postuninstall": "electron-builder install-app-deps",
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "src/background.js",
   "dependencies": {
+    "chart.js": "^4.3.2",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
+    "vue-chartjs": "^5.2.0",
+    "vue-demi": "^0.14.5",
     "vue-router": "^4.0.13"
   },
   "devDependencies": {
